@@ -1,5 +1,6 @@
 import { useState, } from "react";
 import { Pressable, ScrollView, StyleSheet, Text, TextInput, View, } from "react-native";
+import {useClasses } from "./ClassContext";
 
 
 type Class = {
@@ -21,6 +22,8 @@ export default function AddClass() {
     const [selectedDays, setSelectedDays, ] = useState<number[]>([]);
     const days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
     const [classes, setClasses] = useState<Class[]>([]);
+
+    const { classes, setClasses } = useClasses();
 
     return (
         <ScrollView style={styles.container}>
