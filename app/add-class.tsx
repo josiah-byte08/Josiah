@@ -21,7 +21,6 @@ export default function AddClass() {
     const [endTime, setEndTime, ] = useState("");
     const [selectedDays, setSelectedDays, ] = useState<number[]>([]);
     const days = ["Sun", "Mon", "Tue", "Wed", "Thurs", "Fri", "Sat"];
-    const [classes, setClasses] = useState<Class[]>([]);
 
     const { classes, setClasses } = useClasses();
 
@@ -173,4 +172,3 @@ export default function AddClass() {
             fontWeight: "bold",
         }
     });
-
