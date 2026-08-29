@@ -1,0 +1,10 @@
+import { ClassProvider } from "./ClassContext";
+import { Stack } from "expo-router";
+
+export default function Layout() {
+	return (
+		<ClassProvider>
+			<Stack />
+		</ClassProvider>
+	);
+}
