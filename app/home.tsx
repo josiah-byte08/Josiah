@@ -1,5 +1,6 @@
 import { router } from "expo-router";
 import { Pressable, StyleSheet, Text, View, } from "react-native";
+import { useClasses } from "./ClassContext";
 
 function AddClassButton() {
   return(
@@ -8,9 +9,11 @@ function AddClassButton() {
       </Pressable>
   );
 }
+
 export default function HomeScreen() {
 
   const today = new Date();
+  const { classes } = useClasses();
   
   return(
     <View>
