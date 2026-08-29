@@ -1,5 +1,4 @@
 import {useState, useContext, createContext } from "react";
-import { useClasses }
 type Class = {
 className: string;
 professor: string;
