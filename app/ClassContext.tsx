@@ -1,27 +1,37 @@
-import {useState, useContext, createContext } from "react";
+import { createContext, useContext, useState } from "react";
+
 type Class = {
-className: string;
-professor: string;
-room: string;
-startTime: string;
-endTime: string;
-selectedDays: number[];
+    className: string;
+    professor: string;
+    room: string;
+    startTime: string;
+    endTime: string;
+    selectedDays: number[];
+};
+
+type ClassContextType = {
+    classes: Class[];
+    setClasses: React.Dispatch<React.SetStateAction<Class[]>>;
+};
+
+const ClassContext = createContext<ClassContextType | null>(null);
+
+export function ClassProvider({ children }: { children: React.ReactNode }) {
+    const [classes, setClasses] = useState<Class[]>([]);
+
+    return (
+        <ClassContext.Provider value={{ classes, setClasses }}>
+            {children}
+        </ClassContext.Provider>
+    );
 }
 
-const ClassContext = createContext(null);
+export function useClasses() {
+    const context = useContext(ClassContext);
 
-export function ClassProvider({ children }) {
-	const [classes, setClasses] = useState<Class[]>([]);
+    if (!context) {
+        throw new Error("useClasses must be used inside ClassProvider");
+    }
 
-	return (
-		<ClassContext.Provider value= {{ classes, setClasses}}>
-		{children}
-		</ClassContext.Provider>
-	);
-}
-
-export function useClasses(){
-	const context = useContext(ClassContext);
-
-	return context;
+    return context;
 }
